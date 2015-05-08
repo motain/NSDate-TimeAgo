@@ -353,7 +353,10 @@ NSLocalizedStringFromTableInBundle(key, @"NSDateTimeAgo", [NSBundle bundleWithPa
  */
 -(NSString *)getLocaleFormatUnderscoresWithValue:(double)value
 {
-    NSString *localeCode = [[NSLocale preferredLanguages] objectAtIndex:0];
+    static NSString *localeCode;
+    if (localeCode == nil) {
+        localeCode = [[NSLocale preferredLanguages] objectAtIndex:0];
+    }
     
     // Russian (ru)
     if([localeCode isEqual:@"ru"]) {
